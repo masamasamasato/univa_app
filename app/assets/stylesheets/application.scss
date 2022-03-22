@@ -1,0 +1,364 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+* {
+  padding: 0;
+  margin: 0;
+}
+
+header {
+  background-color: #1eb9f4;
+  width: 200px;
+  height: 100%;
+  position: fixed;
+  box-shadow: 8px 5px 5px 1px black;
+  
+
+  & .menu-list{
+    & ul{
+      text-align: center;
+      list-style: none;
+      & li{
+        border-bottom: white 4px solid;
+        margin: auto;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        padding-bottom: 10px;
+        width: 80%;
+        text-align: center;
+
+        & .menu{
+          display: flex;
+
+          & .icon{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            & i{
+              color: white;
+            }
+          }
+
+          & .info{
+            flex:1;
+            & a{
+              color: white;
+              font-family: 'Arial Black', sans-serif;
+              text-decoration: none;
+              font-size: 25px;
+              transition: all 1s;
+              cursor: pointer;
+            }
+            & a:hover{
+              color: black;
+              background-color: white;
+              transform: translate(-5px, -5px);
+              box-shadow: 6px 6px 0 0 black;
+            }
+          }
+        }
+      }
+    }
+  }
+
+
+  .profile{
+    height: 170px;
+    position: relative;
+    border-top: #0000002e 4px solid;
+    margin-top: 65px;
+  
+    & .profile-icon{
+      display: flex;
+      width: 160px;
+      position: absolute;
+      top: 15%;
+      left: 8%;
+      border-radius: 10px;
+      background-color: white;
+      align-items: center;
+      transition: all 1s;
+      box-shadow: 4px 4px 7px 0 #655858;
+  
+      & .profile-icon-image{
+        padding: 10px;
+        & img{
+          border-radius: 60%;
+          width: 50px;
+          height: 50px;
+          transition: all 1s;
+          box-shadow: 0 2px 6px #c1ced7;
+        }
+      }
+      & .profile-icon-right{
+        max-width: 90px;
+        flex: 1;
+        text-align: left;
+        flex-direction: row;
+        
+        & .profile-icon-name{
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          & a{
+            transition: all 1s;
+            color: black;
+            text-decoration: none;
+            font-family: 'ヒラギノ角ゴ StdN','Hiragino Kaku Gothic StdN',sans-serif;
+            font-size: 1px;
+            margin-right: 10%;
+          }
+        }
+
+
+        & .profile-icon-follow{
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          & a{
+            transition: all 1s;
+            color: black;
+            text-decoration: none;
+            font-family: 'ヒラギノ角ゴ StdN','Hiragino Kaku Gothic StdN',sans-serif;
+            font-size: 0.5px;
+            margin-right: 10%;
+          }
+        }
+
+        & .profile-icon-follower{
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          & a{
+            transition: all 1s;
+            color: black;
+            text-decoration: none;
+            font-family: 'ヒラギノ角ゴ StdN','Hiragino Kaku Gothic StdN',sans-serif;
+            font-size: 0.5px;
+            margin-right: 10%;
+          }
+        }
+      }
+    }
+
+
+    & .profile-exit{
+      display: flex;
+      width: 160px;
+      position: absolute;
+      top: 70%;
+      left: 8%;
+      border-radius: 10px;
+      background-color: white;
+      align-items: center;
+      transition: all 1s;
+      box-shadow: 4px 4px 7px 0 #655858;
+  
+      & .profile-icon-image{
+        padding: 10px;
+        & i{
+          font-size:2em;
+        }
+      }
+
+      & .profile-icon-right{
+        max-width: 90px;
+        flex: 1;
+        text-align: left;
+        flex-direction: row;
+        transition: all 1s;
+        
+        & .profile-icon-name{
+          .exit{
+            width: 75px;
+            height: 40px;
+            position: center;
+            display: block;
+            text-decoration: none;
+            text-align: center;
+            background-color: #757272;
+            border-radius: 5px;
+            transition: all 1s;
+            margin: 10px;
+            padding:10px;
+            cursor: pointer;
+            box-shadow: 0px 0px 7px 2px #676f67;
+            color: white;
+            font-family: 'Arial Black', sans-serif;
+          }
+        }
+      }
+    }
+
+    & .profile-icon:hover{
+      
+      & img{
+        width:60px;
+        height:60px;
+        box-shadow: 1px 2px 19px 0px #1eb9f4;
+      }
+  
+      & .profile-icon-right{
+        max-width: 90px;
+        flex: 1;
+        text-align: left;
+        & .profile-icon-name{
+          & a{
+            color: #1eb9f4;
+            text-shadow: 1px 2px 19px 0px black;
+          }
+        }
+        & .profile-icon-logout{
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+      }
+      
+      color: black;
+      background-color: white;
+      transform: translate(-5px, -5px);
+      box-shadow: 6px 6px 0 0 black;
+    }
+
+    & .profile-exit:hover{
+
+      & .profile-icon-right{
+        max-width: 90px;
+        flex: 1;
+        text-align: left;
+        & .profile-icon-name{
+          & .exit{
+            width: 80px;
+            height: 60px;
+            position: center;
+            display: block;
+            text-decoration: none;
+            text-align: center;
+            background-color: #757272;
+            border-radius: 5px;
+            margin: 10px;
+            padding: 8px;
+            cursor: pointer;
+            box-shadow: 0px 0px 7px 2px #676f67;
+            color: rgb(255, 251, 0);
+            font-family: 'Arial Black', sans-serif;
+            font-size: 15px;
+          }
+        }
+      }
+      
+      color: black;
+      background-color: white;
+      transform: translate(-5px, -5px);
+      box-shadow: 6px 6px 0 0 black;
+    }
+  }
+
+  & img.logo-icon {
+    width: 200px;
+    transition: all 1s;
+  }
+  
+  & img.logo-icon:hover {
+    width: 200px;
+    box-shadow: 0 2px 6px #c1ced7;
+  }
+}
+
+
+
+
+
+
+/*# sourceMappingURL=application.css.map */
+
+
+@keyframes flash-animation {
+	0% {
+		opacity: 1;
+	}
+	100% {
+    opacity: 0;
+	}
+}
+
+
+.flash {
+  padding: 10px 0;
+  color: white;
+  background: rgb(255, 217, 0);
+  text-align: center;
+  top: 0;
+  width: 100%;
+  border-radius: 0 0 2px 2px;
+  font-size: 14px;
+  animation-name: flash-animation;
+	animation-duration: 2s;
+  animation-fill-mode: forwards;
+	animation-delay: 2s;
+}
+
+
+.flash-alert {
+  padding: 10px 0;
+  color: white;
+  background: rgb(251, 88, 88);
+  text-align: center;
+  top: 0;
+  width: 100%;
+  border-radius: 0 0 2px 2px;
+  font-size: 14px;
+  animation-name: flash-animation;
+	animation-duration: 2s;
+  animation-fill-mode: forwards;
+	animation-delay: 3s;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+main {
+  margin-left: 220px;
+  padding: 0px 0px;
+  height: 100%;
+  background-color: white;
+}
+
+.pagination {
+  justify-content: center;
+}
+
+.pagination>li>a {          
+  border: none;     
+  color: #696969;   
+}
+
+.pagination>.active>a {     
+  background: #93c9ff;     
+  border-radius: 15px;     
+}
+
+.pagination>li>a:hover {        
+  border-radius: 15px;   
+}

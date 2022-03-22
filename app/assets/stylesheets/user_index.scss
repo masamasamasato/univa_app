@@ -1,0 +1,62 @@
+.user-index-header{
+    text-align: center;
+    & h1{
+        font-family: 'ヒラギノ角ゴ StdN','Hiragino Kaku Gothic StdN',sans-serif;
+        font-size: 25px;
+        opacity:0.3;
+    }
+}
+
+.users-container{
+    display: flex;
+    flex-wrap: wrap;
+
+    & .user-box{
+        width: 20%;
+        padding: 25px;
+        padding-bottom: 60px;
+        margin:0 auto;
+        
+        & .user{
+            background-color: white;
+            padding: 10px;
+            transition: all 1s;
+            box-shadow: 0 2px 6px #c1ced7;
+            & .user-image{
+                padding: 10px;
+                position: relative;
+                text-align: center;
+                & img{
+                    transition: all 1s;
+                    border-radius: 60%;
+                    top: 50%;
+                    left: 50%;
+                    box-shadow: 0 2px 6px #c1ced7;
+                    width: 100px;
+                    height: 100px;
+                }
+            }
+            & .user-info{
+                text-align: center;
+                & ul{
+                    list-style: none;
+                    & li{
+                        font-family: 'ヒラギノ角ゴ StdN','Hiragino Kaku Gothic StdN',sans-serif;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                    }
+                }
+            }
+        }
+        & .user:hover{
+            transform: scale(1.2, 1.2);
+            & img{
+            box-shadow: 1px 2px 19px 0px #1eb9f4;
+            }
+        }
+    }
+}
+
+
+

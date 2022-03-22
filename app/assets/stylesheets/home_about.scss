@@ -1,0 +1,41 @@
+.about-main {
+    height:600px;
+    padding: 100px 8% 0;
+    background-repeat: no-repeat;
+    background-color:rgba(255,255,255,0.8);
+    background-blend-mode:lighten;
+    background-position: 50% 75%;
+    background-size: 60%;
+  }
+  
+  .about-main h2 {
+    font-size: 70px;
+    font-weight: 500;
+    line-height: 1.4;
+  }
+  
+  .about-main p {
+    font-weight: 200;
+    font-size: 20px;
+    color: black;
+  }
+  
+  .about-img {
+    width: 84%;
+  }
+
+  .logo{
+    color: black;
+    font-size: 80px;
+    font-family: 'HanziPen SC',sans-serif;
+  }
+  
+  .num{
+    font-size: 80px;
+    font-weight: 500;
+    line-height: 1.4;
+  }
+  .font{
+    font-weight: 200;
+    font-size: 40px;
+  }

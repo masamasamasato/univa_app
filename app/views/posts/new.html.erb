@@ -1,0 +1,13 @@
+<h1>GeekTwitter</h1>
+<h3>新規Tweet</h3>
+<%= form_for @post do |f| %>
+  <div class="field">
+    <%= f.label :content %>
+    <%= f.text_field :content, :size => 140 %>
+    <%= f.label :teacher_name %>
+    <%= f.text_field :teacher_name, :size => 140 %>
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+  </div>
+  <%= f.submit "Tweetする" %>
+<% end %>

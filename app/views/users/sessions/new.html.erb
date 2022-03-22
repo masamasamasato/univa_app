@@ -1,0 +1,27 @@
+<%= stylesheet_link_tag 'user_login', :media => "all" %>
+
+<div class="login">
+  <div class="login-box">
+
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="field">
+        <%= f.email_field :email, autofocus: true, autocomplete: "email" , class:"form" ,placeholder: 'メールアドレス' %>
+      </div>
+
+      <div class="field">
+        <%= f.password_field :password, autocomplete: "off" , class:"form" ,placeholder: 'パスワード' %>
+      </div>
+
+      <% if devise_mapping.rememberable? -%>
+        <div class="field">
+          <h6><%= f.check_box :remember_me %> ログイン状態を保持する</h6>
+        </div>
+      <% end %>
+
+      <div class="actions">
+        <%= f.submit "ログイン" , class:"login-btn" %>
+      </div>
+    <% end %>
+    <%= render "users/shared/links" %>
+  </div>
+</div>

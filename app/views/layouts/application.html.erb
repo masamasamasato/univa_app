@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SnsApp</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css">
+    <link  rel="stylesheet"href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+    
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src=""></script>
+  </head>
+
+  <body>
+  <header>
+    <div class="header-logo">
+    <li><a href="/"><img class="logo-icon" src="/assets/Univer.png"></a></li>
+    </div>
+    <div class="menu-list">
+      <ul>
+        <li>
+          <div class="menu">
+            <div class="icon">
+            <i class="fa-solid fa-address-card"></i>
+            </div>
+            <div class="info">
+              <a href="/home/about">ABOUT</a>
+            </div>
+          </div>
+        </li>
+        <% if user_signed_in? %>
+        <li>
+          <div class="menu">
+            <div class="icon">
+              <i class="fa-solid fa-message"></i>
+            </div>
+            <div class="info">
+            <a href="#">Message</a>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="menu">
+            <div class="icon">
+              <i class="fa-solid fa-book"></i>
+            </div>
+            <div class="info">
+            <a href="/users/favorite_index/<%= current_user.id %>">Study</a>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="menu">
+            <div class="icon">
+              <i class="fa-solid fa-users"></i>
+            </div>
+            <div class="info">
+              <a href="/users">Users</a>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="profile">
+      <div class="profile-icon">
+          <div class="profile-icon-image">
+            <% if current_user.image? %>
+            <a href="/users/<%= current_user.id %>">
+              <%= image_tag current_user.image_url if current_user.image? %>
+            </a>
+            <% else %>
+            <a href="/users/<%= current_user.id %>">
+            <img class="logo-icon" src="/assets/default.png">
+            </a>
+            <% end %>
+          </div>
+          <div class="profile-icon-right">
+            <div class="profile-icon-name">
+              <a href="/users/<%= current_user.id %>"><%= current_user.name %></a>
+            </div>
+            <div class="profile-icon-follow">
+              <a href="/users/<%= current_user.id %>"><%= current_user.followings.count %> follow</a>
+            </div>
+            <div class="profile-icon-follower">
+              <a href="/users/<%= current_user.id %>"><%= current_user.followers.count %> follower</a>
+            </div>
+          </div>
+      </div>
+
+      <div class="profile-exit">
+          <div class="profile-icon-image">
+            <i class="fa-solid fa-person-to-door"></i>
+            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+          </div>
+          <div class="profile-icon-right">
+            <div class="profile-icon-name">
+              <%= button_to 'Logout', destroy_user_session_path, method: :delete,class: "exit" %>
+            </div>
+          </div>
+      </div>
+    </div>
+    <% end %>
+  </header>
+    <main>
+
+      <% if flash[:notice]%>
+        <div class="flash notice">
+          <%= flash[:notice]%>
+        </div>
+      <%end%>
+        <% if flash[:success]%>
+          <div class="flash success">
+            <%= flash[:success]%>
+          </div>
+        <%end%>
+        <% if flash[:alert]%>
+          <div class="flash-alert">
+            <%= flash[:alert]%>
+          </div>
+        <%end%>
+        
+      <%= yield %>
+    </main>
+  </body>
+</html>

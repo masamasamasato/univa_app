@@ -1,0 +1,20 @@
+<%= stylesheet_link_tag 'home_top', :media => "all" %>
+
+<div class="swiper">
+  <!-- Additional required wrapper -->
+  <div class="swiper-wrapper">
+    <!-- Slides -->
+    <div class="swiper-slide"><img src="/assets/image1.jpg" alt="" /></div>
+    <div class="swiper-slide"><img src="/assets/image2.jpg" alt="" /></div>
+    <div class="swiper-slide"><img src="/assets/image3.jpg" alt="" /></div>
+  </div>
+  <!-- 必要に応じてページネーション -->
+  <div class="swiper-pagination"></div>
+  <!-- 必要に応じてナビボタン -->
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-button-next"></div>
+</div>
+
+<script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+
+<%= javascript_pack_tag 'post/index' %>

@@ -1,0 +1,112 @@
+<%= stylesheet_link_tag 'post_index', :media => "all" %>
+
+<div class="swiper">
+    <!-- Additional required wrapper -->
+    <div class="swiper-wrapper">
+        <!-- Slides -->
+        <div class="swiper-slide"><img src="/assets/image1.jpg" alt="" /></div>
+        <div class="swiper-slide"><img src="/assets/image2.jpg" alt="" /></div>
+        <div class="swiper-slide"><img src="/assets/image3.jpg" alt="" /></div>
+    </div>
+    <!-- 必要に応じてページネーション -->
+    <div class="swiper-pagination"></div>
+    <!-- 必要に応じてナビボタン -->
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+</div>
+
+
+<div class="post-index">
+    <div class="post-index-search">
+        <div class="title">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <h3>問題を探す</h3>
+        </div>
+        <div class="search">
+            <%= form_tag({controller:"posts",action:"index"}, method: :get) do %>
+            <%= text_field_tag :search_1, nil, placeholder: '科目名を入力' %>
+            <%= text_field_tag :search_2, nil, placeholder: '教授名を入力' %>
+            <%= submit_tag '検索する' ,:class => 'btn' %>
+            <% end %>
+        </div>
+    </div>
+
+    <div class="posts-container">
+        <% @posts.each do |t| %>
+            <div class="post">
+                <div class="post-box">
+                    <div class="post-header">
+                        <div class="user-image">
+                        <% if t.user.image? %>
+                            <a href="/users/<%= t.user.id %>">
+                            <%= image_tag t.user.image_url, size: "250x200" if t.user.image? %>
+                            </a>
+                        <% else %>
+                            <a href="/users/<%= current_user.id %>">
+                            <img  src="/assets/default.png">
+                            </a>
+                        <% end %>
+                        </div>
+                        <div class="user-name">
+                            <h2><%= t.user.name %></h2>
+                        </div>
+                    </div>
+                    <div class="post-main">
+                        <div class="title">
+                            <h3>基本情報</h3>
+                        </div>
+                        <div class="info">
+                            <div class="subject">
+                                <h3>科目名:<%= t.content %><h3>
+                            </div>
+                            <div class="subject-name">
+                                <h3>教員名:<%= t.teacher_name %></h3>
+                            </div>
+                        </div>
+                        <div class="post-show">
+                            <h3><%= link_to "詳細へ" , post_path(t.id), class: "show" %><h3>
+                        </div>
+                    </div>
+                    <div class="post-footer">
+                        <div class= "border">
+                            　
+                        </div>
+                        <div class= "good-comments-time">
+                        <div class= "post-good-and-comments">
+                            <div class= "good">
+                                <% if user_signed_in? %>
+                                    <% if current_user.already_liked?(t) %>
+                                        <%= link_to post_like_path(id: t.id, post_id: t.id), method: :delete do %>
+                                            <i class="fas fa-heart"><%= t.likes.count %></i>
+                                        <% end %>
+
+                                    <% else %>
+                                        <%= link_to post_likes_path(id: t.id, post_id: t.id), method: :post do %>
+                                            <i class="far fa-heart"><%= t.likes.count %></i>
+                                        <% end %>
+                                    <% end %>
+                                <% else %>
+                                    <i class="far fa-heart"><%= t.likes.count %></i>
+                                <% end %>
+                            </div>
+                            <div class="comment">
+                                <i class="far fa-comments"><%= t.comments.count %></i>
+                            </div>
+                        </div>
+                        <div class="post-time">
+                            <h5><%= t.created_at.to_s(:datetime_jp) %><h5>
+                        </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        <% end %>
+    </div>
+    <%= paginate @posts %>
+</div>
+<script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+
+<%= javascript_pack_tag 'post/index' %>
+
