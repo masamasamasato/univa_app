@@ -1,0 +1,37 @@
+<%= stylesheet_link_tag 'user_index', :media => "all" %>
+
+<div class="user-index-header">
+<h1>フォロワー一覧</h1>
+</div>
+
+<div class="users-container">
+    <% @followers.each do |t| %>
+    <% unless current_user == t %>
+    <div class="user-box">
+        <div class="user">
+            <div class="user-image">
+                <% if t.image? %>
+                    <a href="/users/<%= t.id %>">
+                        <%= image_tag t.image_url if t.image? %>
+                    </a>
+                <% else %>
+                    <a href="/users/<%= t.id %>">
+                        <img class="logo-icon" src="/assets/default.png">
+                    </a>
+                <% end %>
+            </div>
+            <div class="user-info">
+            <ul>
+                <li>
+                    <%= t.name %>
+                </li>
+                <li>
+                <p><%= render 'relationships/follow_button', user: t %></p>
+                </li>
+            </ul>
+            </div>
+        </div>
+    </div>
+    <% end %>
+    <% end %>
+</div>

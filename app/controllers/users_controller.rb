@@ -12,5 +12,15 @@ class UsersController < ApplicationController
         @user = User.find(params[:id])
         @favorite_posts = @user.favorite_posts # 追加
     end
-    
+
+    def followings
+        @user = User.find(params[:id])
+        @followings = @user.followings
+    end
+
+    def followers
+        @user = User.find(params[:id])
+        @followers = @user.followers
+    end
+
 end

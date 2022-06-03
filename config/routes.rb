@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   get 'favorites/create'
   get 'favorites/destroy'
+  get "users/:id/followings" => "users#followings"
+  get "users/:id/followers" => "users#followers"
   devise_for :users
   get "users/favorite_index/:id" =>"users#favorite_index"
   delete 'users/:id' => 'users#destroy'
@@ -25,5 +27,6 @@ Rails.application.routes.draw do
   end
 
   resources :relationships, only: [:create, :destroy]
+  
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

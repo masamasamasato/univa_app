@@ -82,10 +82,10 @@
               <a href="/users/<%= current_user.id %>"><%= current_user.name %></a>
             </div>
             <div class="profile-icon-follow">
-              <a href="/users/<%= current_user.id %>"><%= current_user.followings.count %> follow</a>
+              <a href="/users/<%= current_user.id %>/followings"><%= current_user.followings.count %> follow</a>
             </div>
             <div class="profile-icon-follower">
-              <a href="/users/<%= current_user.id %>"><%= current_user.followers.count %> follower</a>
+              <a href="/users/<%= current_user.id %>/followers"><%= current_user.followers.count %> follower</a>
             </div>
           </div>
       </div>
