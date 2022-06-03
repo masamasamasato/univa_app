@@ -15,7 +15,7 @@ class User < ApplicationRecord
   has_many :favorite_posts, through: :favorites, source: :post
   has_many :comments, dependent: :destroy #どの投稿にコメントをしているのか 中間テーブル
   has_many :relationships #どの人をフォローしているのかの中間テーブル
-  has_many :followings, through: :relationships, source: :follow #userがどの人をフォローしているのか
+  has_many :followings, through: :relationships, source: :follow #フォローされる人全員を中間テーブルを通じて取ってくる
   has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: :follow_id #どの人からフォローされているのかの中間テーブル
   has_many :followers, through: :reverse_of_relationships, source: :user
 
