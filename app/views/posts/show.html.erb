@@ -3,6 +3,7 @@
 <div class="tweet">
     
 <%= image_tag @post.user.image_url, size: "250x200" if @post.user.image? %>
+<%= image_tag @post.image_url, size: "250x200" if @post.image? %>
   <p><%= @post.content %></p>
   <p><%= @post.teacher_name %></p>
   <p><%= @post.created_at %></p>
