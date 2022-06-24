@@ -5,7 +5,7 @@ class UsersController < ApplicationController
     end
 
     def index
-        @users = User.all.page(params[:page]).per(12)
+        @users = User.all.page(params[:page]).per(15)
     end
 
     def favorite_index
