@@ -5,7 +5,7 @@ class PostsController < ApplicationController
     def index
         if params[:search_1] == nil or params[:search_1] == ''
             if params[:search_2] == nil or params[:search_2] == ''
-                @posts= Post.all.page(params[:page]).per(8)
+                @posts= Post.includes(:user).page(params[:page]).per(8)
             else
                 @posts = Post.where("teacher_name LIKE ? ",'%' + params[:search_2] + '%').page(params[:page]).per(3)
             end
@@ -16,7 +16,6 @@ class PostsController < ApplicationController
                 @posts = Post.where("content LIKE ? AND teacher_name LIKE ?", "%#{params[:search_1]}%", "%#{params[:search_2]}%").page(params[:page]).per(3)
             end
         end
-        @rank_posts = Post.all.sort {|a,b| b.liked_users.count <=> a.liked_users.count}
     end
 
     def new

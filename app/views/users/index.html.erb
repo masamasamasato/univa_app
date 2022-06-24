@@ -1,8 +1,12 @@
 <%= stylesheet_link_tag 'user_index', :media => "all" %>
 
+
+
 <div class="user-index-header">
+
 <h1>ユーザー一覧</h1>
-</div>
+
+
 
 <div class="users-container">
     <% @users.each do |t| %>
@@ -34,4 +38,8 @@
     </div>
     <% end %>
     <% end %>
+    
+
+</div>
+<%= paginate @users %>
 </div>
