@@ -61,6 +61,9 @@ gem 'carrierwave' , '~> 1.3' ,  '>= 1.3.1'
 gem 'cloudinary'
 gem 'dotenv-rails'
 gem 'jquery-rails'
+gem 'bootstrap-sass', '~> 3.4', '>= 3.4.1'
+#gem 'bootstrap', '~> 4.3.1'
+gem 'bootstrap', '~> 5.1', '>= 5.1.3'
 
 group :production do
   gem 'pg'

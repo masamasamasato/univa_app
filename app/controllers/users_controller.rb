@@ -6,6 +6,7 @@ class UsersController < ApplicationController
 
     def index
         @users = User.all.page(params[:page]).per(15)
+        @sorted_users = @users.sort {|a,b| b.followers.size <=> a.followers.size}   #followerの数でソート
     end
 
     def favorite_index

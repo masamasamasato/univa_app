@@ -18,6 +18,7 @@
   margin: 0;
 }
 
+
 header {
   background-color: #1eb9f4;
   width: 200px;
@@ -362,3 +363,6 @@ main {
 .pagination>li>a:hover {        
   border-radius: 15px;   
 }
+
+@import "bootstrap-sprockets";
+@import "bootstrap";

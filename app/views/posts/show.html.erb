@@ -1,4 +1,4 @@
-<div class="tweet">
+<%= stylesheet_link_tag 'user_index', :media => "all" %>
     
 <%= image_tag @post.user.image_url, size: "250x200" if @post.user.image? %>
 <%= image_tag @post.image_url, size: "250x200" if @post.image? %>
@@ -33,17 +33,57 @@
   <% else %>
 <% end %>
 
-<h2>いいねしたユーザー</h2>
-<% @post.liked_users.each do |user| %>
-    <li><%= user.email %></li>
-<% end %>
+
+<div class="user-index-header">
+
+<h1>いいねしたユーザー一覧</h1>
+
+
+
+<div class="users-container">
+    <% @sorted_users.each do |t| %>
+    <% unless current_user == t %>
+    <div class="user-box">
+        <div class="user">
+            <div class="user-image">
+                <% if t.image? %>
+                    <a href="/users/<%= t.id %>">
+                        <%= image_tag t.image_url if t.image? %>
+                    </a>
+                <% else %>
+                    <a href="/users/<%= t.id %>">
+                        <img class="logo-icon" src="/assets/default.png">
+                    </a>
+                <% end %>
+            </div>
+            <div class="user-info">
+            <ul>
+                <li>
+                    <%= t.name %>
+                </li>
+                <li>
+                <p><%= render 'relationships/follow_button', user: t %></p>
+                </li>
+            </ul>
+            </div>
+        </div>
+    </div>
+    <% end %>
+    <% end %>
+    
+
+</div>
+<%= paginate @users %>
+</div>
+
+
 
 
 <div class="comment-wrapper">
   <p>コメント一覧</p>
   <% @comments.each do |c| %>
     <div>
-      <%= c.user.email unless c.user.blank? %>
+      <%= c.user.name unless c.user.blank? %>
       <br>
       <%= image_tag c.image_url, size: "250x200" if c.image? %>
       <%= c.content %>
@@ -64,4 +104,7 @@
 
 
 <%= link_to "Tweet一覧に戻る", posts_path %>
-<%= link_to "編集する", edit_post_path(@post.id) %>
+
+<% if current_user.id == @post.user.id %>
+    <%= link_to "編集する", edit_post_path(@post.id) %>
+<% end %>
