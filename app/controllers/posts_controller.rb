@@ -70,8 +70,8 @@ class PostsController < ApplicationController
         redirect_to action: :index
     end
 
-    private #ストロングパラメーターの記述部分postモデルの投稿可能な内容の絞り込み
-    def post_params
+    private 
+    def post_params #ストロングパラメーターの記述部分postモデルの投稿可能な内容の絞り込み
         params.require(:post).permit(:content,:teacher_name,:image) #モデルの必要なカラムに絞り込んでいる
     end
 

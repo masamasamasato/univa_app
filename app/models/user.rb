@@ -23,23 +23,23 @@ class User < ApplicationRecord
   validates :name, presence: true 
   validates :profile, length: { maximum: 200 } 
 
-  def already_liked?(post)
+  def already_liked?(post)  #いいねしているかの判定
     self.likes.exists?(post_id: post.id)
   end
 
-  def follow(other_user)
-    unless self == other_user
-      self.relationships.find_or_create_by(follow_id: other_user.id)
+  def follow(other_user)  #other_userのフォローをする
+    unless self == other_user #フォローしようとしているother_user自身が自分自身でないかを確認
+      self.relationships.find_or_create_by(follow_id: other_user.id)  #follow_idはother_user_idのrelationshipを新規作成して保存する
     end
   end
 
-  def unfollow(other_user)
-    relationship = self.relationships.find_by(follow_id: other_user.id)
-    relationship.destroy if relationship
+  def unfollow(other_user)  #other_userのフォローを外す
+    relationship = self.relationships.find_by(follow_id: other_user.id) #other_userのrelationshipを取ってくる
+    relationship.destroy if relationship  #relationshipが存在すればそれをdestroyする
   end
 
-  def following?(other_user)
-    self.followings.include?(other_user)
+  def following?(other_user)  #other_userをフォローしているかの判定を行う。
+    self.followings.include?(other_user)  #self.followingsで自分自身がfollowしている人全員を取ってきてother_userがそこに含まれているかを調べる
   end
 
 end

@@ -25,7 +25,7 @@ class RelationshipsController < ApplicationController
   
     
     private
-    def set_user
+    def set_user  #外側からアクセスできないようにしている
       @user = User.find(params[:follow_id])
     end
   
