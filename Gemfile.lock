@@ -297,8 +297,6 @@ DEPENDENCIES
   jquery-rails
   kaminari
   listen (~> 3.3)
-  mysql2
-  pg
   puma (~> 5.0)
   rack-mini-profiler (~> 2.0)
   rails (~> 6.1.4, >= 6.1.4.1)
