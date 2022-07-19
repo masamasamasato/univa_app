@@ -29,7 +29,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.4', require: false
 
 group :development, :test do
-  #gem 'sqlite3'
+  gem 'sqlite3'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
@@ -64,12 +64,3 @@ gem 'jquery-rails'
 gem 'bootstrap-sass', '~> 3.4', '>= 3.4.1'
 #gem 'bootstrap', '~> 4.3.1'
 gem 'bootstrap', '~> 5.1', '>= 5.1.3'
-gem 'mysql2'
-
-group :production do
-  gem 'pg'
-end
-
-group :development do
-  gem 'bullet'
-end
